@@ -58,7 +58,7 @@ const requestReducer: ReuqestReducer = (
     case "CLEAR":
       return initialState;
     default:
-      return initialState;
+      throw new Error("Request Custom Hook: Reducer - Unknown actin type");
   }
 };
 
