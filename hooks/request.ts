@@ -72,7 +72,13 @@ const useRequest = () => {
   const clear = useCallback(() => dispatchRequest({ type: "CLEAR" }), []);
 
   const sendRequest = useCallback(
-    (url: string, method: string, body: Body, reqExtra: RequestExtra, reqIdentifer: ReqestIdentifier) => {
+    (
+      url: string,
+      method: string,
+      body: Body,
+      reqExtra: RequestExtra,
+      reqIdentifer: ReqestIdentifier
+    ) => {
       dispatchRequest({ type: "SEND", identifier: reqIdentifer });
       fetch(url, {
         method: method,
