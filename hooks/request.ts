@@ -18,7 +18,7 @@ type ReducerState = {
 };
 
 type ReducerAction = {
-  type: string;
+  type: 'SEND' | 'RESPONSE' | 'ERROR' | 'CLEAR';
   identifier?: ReqestIdentifier;
   responseData?: Body;
   extra?: RequestExtra;
