@@ -3,6 +3,7 @@ import { useReducer, useCallback } from "react";
 type Body = BodyInit | null | undefined;
 type RequestExtra = string | number | {} | null | undefined;
 type ReqestIdentifier = string | null | undefined;
+type ReducerActionType = "SEND" | "RESPONSE" | "ERROR" | "CLEAR";
 
 type ReuqestReducer = (
   state: ReducerState,
@@ -18,7 +19,7 @@ type ReducerState = {
 };
 
 type ReducerAction = {
-  type: 'SEND' | 'RESPONSE' | 'ERROR' | 'CLEAR';
+  type: ReducerActionType;
   identifier?: ReqestIdentifier;
   responseData?: Body;
   extra?: RequestExtra;
