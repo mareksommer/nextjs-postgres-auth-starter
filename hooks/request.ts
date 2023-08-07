@@ -49,7 +49,7 @@ const requestReducer: ReuqestReducer = (
       return {
         ...prevRequestState,
         loading: false,
-        data: action.responseData,
+        responseData: action.responseData,
       };
     case "ERROR":
       return { loading: false, error: action.errorMessage };
