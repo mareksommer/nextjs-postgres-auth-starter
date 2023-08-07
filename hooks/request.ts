@@ -1,7 +1,11 @@
 import { useReducer, useCallback } from "react";
 import { makeRequest, Body, Method } from "@/lib/request";
 
-type ReqestIdentifier = string | null | undefined;
+type ReqestIdentifier =
+  | string
+  | { id: string; key: number | string | {} }
+  | null
+  | undefined;
 type ReducerActionType = "SEND" | "RESPONSE" | "ERROR" | "CLEAR";
 
 type ReuqestReducer = (
