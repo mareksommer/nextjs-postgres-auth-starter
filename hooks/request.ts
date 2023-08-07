@@ -80,17 +80,8 @@ const useRequest = () => {
       reqIdentifer: ReqestIdentifier
     ) => {
       dispatchRequest({ type: "SEND", identifier: reqIdentifer });
-      fetch(url, {
-        method: method,
-        body: body,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((responseData) => {
+      makeRequest(url, method, body)
+        .then((responseData: Body) => {
           dispatchRequest({
             type: "RESPONSE",
             responseData: responseData,
