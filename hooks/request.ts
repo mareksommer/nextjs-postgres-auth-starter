@@ -41,9 +41,8 @@ const requestReducer: ReuqestReducer = (
   switch (action.type) {
     case "SEND":
       return {
+        ...initialState,
         loading: true,
-        error: null,
-        data: null,
         identifier: action.identifier,
       };
     case "RESPONSE":
