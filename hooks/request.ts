@@ -74,7 +74,7 @@ const useRequest = () => {
   const sendRequest = useCallback(
     (
       url: string,
-      method: string,
+      method: Method,
       body: Body,
       reqExtra: RequestExtra,
       reqIdentifer: ReqestIdentifier
