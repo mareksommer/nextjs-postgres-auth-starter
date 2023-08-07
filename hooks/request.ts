@@ -1,7 +1,6 @@
 import { useReducer, useCallback } from "react";
 import { makeRequest, Body, Method } from "@/lib/request";
 
-type RequestExtra = string | number | {} | null | undefined;
 type ReqestIdentifier = string | null | undefined;
 type ReducerActionType = "SEND" | "RESPONSE" | "ERROR" | "CLEAR";
 
@@ -14,7 +13,6 @@ type ReducerState = {
   loading: boolean;
   error?: string | null;
   data?: Body;
-  extra?: RequestExtra;
   identifier?: ReqestIdentifier;
 };
 
@@ -22,7 +20,6 @@ type ReducerAction = {
   type: ReducerActionType;
   identifier?: ReqestIdentifier;
   responseData?: Body;
-  extra?: RequestExtra;
   errorMessage?: string;
 };
 
@@ -30,7 +27,6 @@ const initialState = {
   loading: false,
   error: null,
   data: null,
-  extra: null,
   identifier: null,
 };
 
@@ -44,7 +40,6 @@ const requestReducer: ReuqestReducer = (
         loading: true,
         error: null,
         data: null,
-        extra: null,
         identifier: action.identifier,
       };
     case "RESPONSE":
@@ -52,7 +47,6 @@ const requestReducer: ReuqestReducer = (
         ...prevRequestState,
         loading: false,
         data: action.responseData,
-        extra: action.extra,
       };
     case "ERROR":
       return { loading: false, error: action.errorMessage };
@@ -76,7 +70,7 @@ const useRequest = () => {
       url: string,
       method: Method,
       body: Body,
-      reqExtra: RequestExtra,
+
       reqIdentifer: ReqestIdentifier
     ) => {
       dispatchRequest({ type: "SEND", identifier: reqIdentifer });
@@ -85,7 +79,6 @@ const useRequest = () => {
           dispatchRequest({
             type: "RESPONSE",
             responseData: responseData,
-            extra: reqExtra,
           });
         })
         .catch((error) => {
@@ -103,7 +96,6 @@ const useRequest = () => {
     data: requestState.data,
     error: requestState.error,
     sendRequest: sendRequest,
-    reqExtra: requestState.extra,
     reqIdentifer: requestState.identifier,
     clear: clear,
   };
