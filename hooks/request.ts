@@ -1,6 +1,6 @@
 import { useReducer, useCallback } from "react";
+import { makeRequest, Body, Method } from "@/lib/request";
 
-type Body = BodyInit | null | undefined;
 type RequestExtra = string | number | {} | null | undefined;
 type ReqestIdentifier = string | null | undefined;
 type ReducerActionType = "SEND" | "RESPONSE" | "ERROR" | "CLEAR";
