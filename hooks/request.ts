@@ -52,7 +52,11 @@ const requestReducer: ReuqestReducer = (
         responseData: action.responseData,
       };
     case "ERROR":
-      return { loading: false, error: action.errorMessage };
+      return {
+        ...prevRequestState,
+        loading: false,
+        error: action.errorMessage,
+      };
     case "CLEAR":
       return initialState;
     default:
