@@ -16,7 +16,7 @@ type ReuqestReducer = (
 type ReducerState = {
   loading: boolean;
   error?: string | null;
-  data?: Body;
+  responseData?: Body;
   identifier?: ReqestIdentifier;
 };
 
@@ -30,7 +30,7 @@ type ReducerAction = {
 const initialState = {
   loading: false,
   error: null,
-  data: null,
+  responseData: null,
   identifier: null,
 };
 
@@ -74,7 +74,6 @@ const useRequest = () => {
       url: string,
       method: Method,
       body: Body,
-
       reqIdentifer: ReqestIdentifier
     ) => {
       dispatchRequest({ type: "SEND", identifier: reqIdentifer });
@@ -97,7 +96,7 @@ const useRequest = () => {
 
   return {
     isLoading: requestState.loading,
-    data: requestState.data,
+    responseData: requestState.responseData,
     error: requestState.error,
     sendRequest: sendRequest,
     reqIdentifer: requestState.identifier,
