@@ -3,7 +3,7 @@ import { makeRequest, Body, Method } from "@/lib/request";
 
 type ReqestIdentifier =
   | string
-  | { id: string; key: number | string | {} }
+  | { requestName: string; requestKey: number | string | {} }
   | null
   | undefined;
 type ReducerActionType = "SEND" | "RESPONSE" | "ERROR" | "CLEAR";
