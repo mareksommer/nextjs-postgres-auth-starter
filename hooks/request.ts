@@ -27,6 +27,14 @@ type ReducerAction = {
   errorMessage?: string;
 };
 
+type Response = {
+  ok: boolean,
+  status: number,
+  statusText: string,
+  body?: Body,
+  headers?: Headers,
+}
+
 const initialState = {
   loading: false,
   error: null,
