@@ -109,11 +109,13 @@ const useRequest = () => {
   );
 
   return {
+    sendRequest: sendRequest,
+    clear: clear,
     isLoading: requestState.loading,
+    response: requestState.response,
     responseData: requestState.responseData,
     errorMessage: requestState.errorMessage,
     reqIdentifer: requestState.identifier,
-    clear: clear,
   };
 };
 
