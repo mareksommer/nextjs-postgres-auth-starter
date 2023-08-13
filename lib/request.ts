@@ -11,9 +11,7 @@ function tryMakeRequest(
   try {
     return fetchRequest(url, method, body, headers);
   } catch (error) {
-    if (error instanceof Error)
-      throw new Error(error.message);
-    return error
+    return error;
   }
 }
 function fetchRequest(
