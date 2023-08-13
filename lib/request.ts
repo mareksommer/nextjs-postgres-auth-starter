@@ -26,14 +26,21 @@ async function fetchRequest(
     headers: getHeaders(headers),
   });
 
-  const responseBody = await response.json();
+  try {
+    const responseBody = await response.json();
+    return getResponseObject(response, responseBody);
+  } catch (error) {
+    return getResponseObject(response, null);
+  }
+}
+function getResponseObject(response: Response, body: Body) {
   return {
     url: response.url,
     headers: response.headers,
     ok: response.ok,
     status: response.status,
     statusText: response.statusText,
-    body: responseBody,
+    body: body,
   };
 }
 function getHeaders(headers: Headers) {
