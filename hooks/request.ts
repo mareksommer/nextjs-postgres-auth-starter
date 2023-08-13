@@ -90,6 +90,21 @@ function getResponseErrorMessage(response: Response) {
   if (response.statusText) return response.statusText;
   return "Something went wrong";
 }
+function getResponseSuccessDispatchObject(response: Response): ReducerAction {
+  return {
+    type: "RESPONSE",
+    response: response,
+    responseData: response.body,
+  };
+}
+function getGenericErorrDispatchObject(error: Error | string): ReducerAction {
+  const errorMessage = error instanceof Error ? error.message : error;
+  return {
+    type: "ERROR",
+    errorMessage: errorMessage || "Something went wrong",
+  };
+}
+
 const useRequest = () => {
   const [requestState, dispatchRequest] = useReducer(
     requestReducer,
