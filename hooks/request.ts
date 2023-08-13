@@ -77,6 +77,19 @@ const requestReducer: ReuqestReducer = (
   }
 };
 
+function getResponseErrorDispatchObject(response: Response): ReducerAction {
+  return {
+    type: "ERROR",
+    response: response,
+    errorMessage: getResponseErrorMessage(response),
+  };
+}
+function getResponseErrorMessage(response: Response) {
+  // @ts-ignore
+  if (response.body && response.body.error) return response.body.error;
+  if (response.statusText) return response.statusText;
+  return "Something went wrong";
+}
 const useRequest = () => {
   const [requestState, dispatchRequest] = useReducer(
     requestReducer,
