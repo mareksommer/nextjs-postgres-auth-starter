@@ -30,12 +30,12 @@ type ReducerAction = {
 };
 
 type Response = {
-  ok: boolean,
-  status: number,
-  statusText: string,
-  body?: Body,
-  headers?: Headers,
-}
+  ok: boolean;
+  status: number;
+  statusText: string;
+  body?: Body;
+  headers?: Headers;
+};
 
 const initialState = {
   loading: false,
@@ -60,6 +60,7 @@ const requestReducer: ReuqestReducer = (
       return {
         ...prevRequestState,
         loading: false,
+        response: action.response,
         responseData: action.responseData,
       };
     case "ERROR":
