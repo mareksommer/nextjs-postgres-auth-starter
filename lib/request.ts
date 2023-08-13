@@ -1,6 +1,6 @@
 export type Method = "GET" | "POST" | "PUT" | "DELETE";
 export type Headers = {} | undefined;
-export type Body = BodyInit | null | undefined;
+export type Body = BodyInit | {} | null | undefined;
 
 function tryMakeRequest(
   url: string,
