@@ -122,17 +122,13 @@ const useRequest = () => {
     ) => {
       dispatchRequest({ type: "SEND", identifier: reqIdentifer });
       makeRequest(url, method, body)
-        .then((responseData: Body) => {
-          dispatchRequest({
-            type: "RESPONSE",
-            responseData: responseData,
-          });
+        .then((response: Response) => {
+          if (response && !response.ok)
+            return dispatchRequest(getResponseErrorDispatchObject(response));
+          dispatchRequest(getResponseSuccessDispatchObject(response));
         })
         .catch((error) => {
-          dispatchRequest({
-            type: "ERROR",
-            errorMessage: "Something went wrong!",
-          });
+          dispatchRequest(getGenericErorrDispatchObject(error));
         });
     },
     []
