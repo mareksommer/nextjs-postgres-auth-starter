@@ -1,5 +1,5 @@
 import { useReducer, useCallback } from "react";
-import { makeRequest, Body, Method } from "@/lib/request";
+import { makeRequest, Headers, Body, Method } from "@/lib/request";
 
 type ReqestIdentifier =
   | string
