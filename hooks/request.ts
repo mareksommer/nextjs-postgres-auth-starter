@@ -23,6 +23,7 @@ type ReducerState = {
 type ReducerAction = {
   type: ReducerActionType;
   identifier?: ReqestIdentifier;
+  response?: Response;
   responseData?: Body;
   errorMessage?: string;
 };
