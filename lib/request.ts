@@ -20,11 +20,21 @@ async function fetchRequest(
   body: Body,
   headers: Headers
 ) {
-  return fetch(url, {
+  const response = await fetch(url, {
     method: method,
     body: JSON.stringify(body),
     headers: getHeaders(headers),
-  }).then((res) => res.json());
+  });
+
+  const responseBody = await response.json();
+  return {
+    url: response.url,
+    headers: response.headers,
+    ok: response.ok,
+    status: response.status,
+    statusText: response.statusText,
+    body: responseBody,
+  };
 }
 function getHeaders(headers: Headers) {
   return {
