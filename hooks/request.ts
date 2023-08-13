@@ -15,7 +15,7 @@ type ReuqestReducer = (
 
 type ReducerState = {
   loading: boolean;
-  error?: string | null;
+  errorMessage?: string | null;
   response?: Response | null;
   responseData?: Body;
   identifier?: ReqestIdentifier;
@@ -41,7 +41,7 @@ const initialState = {
   loading: false,
   response: null,
   responseData: null,
-  error: null,
+  errorMessage: null,
   identifier: null,
 };
 
@@ -111,8 +111,7 @@ const useRequest = () => {
   return {
     isLoading: requestState.loading,
     responseData: requestState.responseData,
-    error: requestState.error,
-    sendRequest: sendRequest,
+    errorMessage: requestState.errorMessage,
     reqIdentifer: requestState.identifier,
     clear: clear,
   };
