@@ -14,7 +14,7 @@ function tryMakeRequest(
     return error;
   }
 }
-function fetchRequest(
+async function fetchRequest(
   url: string,
   method: Method,
   body: Body,
