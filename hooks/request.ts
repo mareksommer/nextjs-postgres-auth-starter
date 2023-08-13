@@ -16,6 +16,7 @@ type ReuqestReducer = (
 type ReducerState = {
   loading: boolean;
   error?: string | null;
+  response?: Response | null;
   responseData?: Body;
   identifier?: ReqestIdentifier;
 };
