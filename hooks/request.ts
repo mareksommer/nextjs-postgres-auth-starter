@@ -67,7 +67,8 @@ const requestReducer: ReuqestReducer = (
       return {
         ...prevRequestState,
         loading: false,
-        error: action.errorMessage,
+        response: action.response,
+        errorMessage: action.errorMessage,
       };
     case "CLEAR":
       return initialState;
