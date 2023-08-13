@@ -39,8 +39,9 @@ type Response = {
 
 const initialState = {
   loading: false,
-  error: null,
+  response: null,
   responseData: null,
+  error: null,
   identifier: null,
 };
 
