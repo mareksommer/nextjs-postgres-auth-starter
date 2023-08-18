@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import AuthStatus from "@/components/auth-status";
 import { Suspense } from "react";
+import HeaderLoadingIndicator from "@/components/loading/header-loading-indicator";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,8 +37,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.variable}>
         <Toaster />
+        <HeaderLoadingIndicator />
         <Suspense fallback="Loading...">
-          {/* @ts-expect-error Async Server Component */}
           <AuthStatus />
         </Suspense>
         {children}
